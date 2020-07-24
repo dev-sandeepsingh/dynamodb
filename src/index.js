@@ -5,15 +5,18 @@ const { createSequelize } = require('./infra/sequelize');
 const { createApp } = require('./infra/http/app');
 const { reportError } = require('./infra/report-error');
 const { Queue } = require('./common/queue.js');
+const { createServices } = require('./services/index.js');
 
 (async () => {
   const sequelize = await createSequelize();
   const queue = Queue();
+  const services = createServices();
 
   const app = createApp({
     reportError,
     sequelize,
     queue,
+    services,
   });
 
   const server = app.listen(port, () => {

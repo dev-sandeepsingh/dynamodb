@@ -7,6 +7,7 @@ const bodyParserJsonError = require('express-body-parser-json-error');
 const config = require('../../config.js');
 
 const { createUsersRoute } = require('./routes/users/index.js');
+const { createDynamoDBRoute } = require('./routes/dynamodb/index.js');
 const { createCore } = require('../../core/index.js');
 const { createApplication } = require('../../application/index.js');
 const { createNotFoundRoute } = require('./routes/not-found.js');
@@ -21,6 +22,7 @@ const createApp = ({
   application = {},
   core,
   config: { cors: { origin: corsOrigin } } = config,
+  services,
 }) => {
   core = core || createCore({ sequelize }); // eslint-disable-line no-param-reassign
   // eslint-disable-next-line no-param-reassign
@@ -41,6 +43,8 @@ const createApp = ({
     bruteforce,
     config,
   });
+
+  const dynamoDBRoute = createDynamoDBRoute({ services });
 
   if (config.docs.username && config.docs.password) {
     app.use('/docs', [
@@ -76,6 +80,8 @@ const createApp = ({
   app.use(bodyParserJsonError());
 
   app.use('/users', usersRoute);
+  app.use('/dynamoDB', dynamoDBRoute);
+
   app.get('/', (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
 
