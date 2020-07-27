@@ -80,11 +80,35 @@ const createDynamoDBService = () => {
       else console.log(data);
     });
   };
+  const getAllProjectsByOrganization = async ({ orgId }) => {
+    const params = {
+      TableName,
+      KeyConditionExpression: '#PK = :PK and begins_with(#SK, :SK)',
+      ExpressionAttributeNames: { '#PK': 'PK', '#SK': 'SK' },
+      ExpressionAttributeValues: {
+        ':PK': `ORG#${orgId}`,
+        ':SK': 'PRO',
+      },
+    };
+    let result;
+    await dynamodb
+      .query(params)
+      .promise()
+      .then(function(data) {
+        result = data.Items;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    return result;
+  };
+
   return {
     addItem,
     addProjectByOrganization,
     updateOrganization,
     getOrganization,
+    getAllProjectsByOrganization,
   };
 };
 
