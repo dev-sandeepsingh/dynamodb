@@ -9,8 +9,8 @@ const createAddItemRoute = ({
   },
 }) => {
   /**
-   * @api {post} /item/addItem Add item
-   * @apiName AddItem
+   * @api {post} /item/item Add item
+   * @apiName item
    * @apiGroup Item
    *
    * @apiParam { string } companyName
@@ -18,7 +18,7 @@ const createAddItemRoute = ({
    *
    */
   router.post(
-    '/addItem',
+    '/item',
     [check.body('name').isString(), check.body('tier').isString()],
     validateInput,
     toApiResponse(async ({ body: { name, tier } }) => {

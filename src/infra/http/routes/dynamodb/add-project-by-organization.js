@@ -9,7 +9,7 @@ const createAddProjectByOrganizationRoute = ({
   },
 }) => {
   router.post(
-    '/addProjectByOrganization',
+    '/projectByOrganization',
     [
       check.body('name').isString(),
       check.body('type').isString(),

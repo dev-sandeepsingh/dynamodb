@@ -9,7 +9,7 @@ const createUpdateOrganizationRoute = ({
   },
 }) => {
   router.put(
-    '/updateOrganization',
+    '/organization',
     [check.body('name').isString(), check.param('orgId')],
     validateInput,
     toApiResponse(async ({ body: { name }, query: { orgId } }) => {
