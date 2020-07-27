@@ -25,7 +25,7 @@ const createDynamoDBService = () => {
     });
   };
 
-  const getOrganization = ({ orgId }) => {
+  const getOrganization = async ({ orgId }) => {
     const params = {
       TableName,
       Key: {
@@ -33,11 +33,17 @@ const createDynamoDBService = () => {
         SK: `#METADATA#${orgId}`,
       },
     };
-
-    dynamodb.get(params, function(err, data) {
-      if (err) console.log(err);
-      else console.log(data);
-    });
+    let result;
+    await dynamodb
+      .get(params)
+      .promise()
+      .then(function(data) {
+        result = data.Item;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    return result;
   };
 
   const updateOrganization = ({ orgId, name }) => {

@@ -4,6 +4,7 @@ const {
   createAddProjectByOrganizationRoute,
 } = require('./add-project-by-organization.js');
 const { createUpdateOrganizationRoute } = require('./update-organization.js');
+const { createGetOrganizationRoute } = require('./get-organization.js');
 
 const createDynamoDBRoute = ({ services }) => {
   const router = new Router();
@@ -11,6 +12,7 @@ const createDynamoDBRoute = ({ services }) => {
   createAddItemRoute({ router, services });
   createAddProjectByOrganizationRoute({ router, services });
   createUpdateOrganizationRoute({ router, services });
+  createGetOrganizationRoute({ router, services });
   return router;
 };
 
