@@ -23,7 +23,24 @@ const createDynamoDBService = () => {
       else console.log(data);
     });
   };
-  return { addItem };
+  const addProjectByOrganization = ({ name, orgId }) => {
+    const projectId = uuid();
+    const params = {
+      TableName: 'project-management',
+      Item: {
+        PK: `ORG#${orgId}`,
+        SK: `PRO#agile#${projectId}`,
+        name,
+        projectId,
+      },
+    };
+
+    dynamodb.put(params, function(err, data) {
+      if (err) console.log(err);
+      else console.log(data);
+    });
+  };
+  return { addItem, addProjectByOrganization };
 };
 
 module.exports = { createDynamoDBService };
