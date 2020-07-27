@@ -10,11 +10,15 @@ const createAddProjectByOrganizationRoute = ({
 }) => {
   router.post(
     '/addProjectByOrganization',
-    [check.body('name').isString(), check.param('orgId')],
+    [
+      check.body('name').isString(),
+      check.body('type').isString(),
+      check.param('orgId'),
+    ],
     validateInput,
-    toApiResponse(async ({ body: { name }, query: { orgId } }) => {
-      await addProjectByOrganization({ name, orgId });
-      return { status: 204, data: null };
+    toApiResponse(async ({ body: { name, type }, query: { orgId } }) => {
+      await addProjectByOrganization({ name, type, orgId });
+      return { status: 200, data: null };
     }),
   );
 

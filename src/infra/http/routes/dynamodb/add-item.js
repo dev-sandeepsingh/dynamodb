@@ -23,7 +23,7 @@ const createAddItemRoute = ({
     validateInput,
     toApiResponse(async ({ body: { name, tier } }) => {
       await addItem({ name, tier });
-      return { status: 204, data: null };
+      return { status: 200, data: null };
     }),
   );
 
