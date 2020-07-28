@@ -1,10 +1,10 @@
 const { Router } = require('express');
-const { createAddItemRoute } = require('./add-item.js');
+const { createAddUserRoute } = require('./add-user.js');
 const {
   createAddProjectByOrganizationRoute,
 } = require('./add-project-by-organization.js');
 const { createUpdateOrganizationRoute } = require('./update-organization.js');
-const { createGetOrganizationRoute } = require('./get-organization.js');
+const { createGetUserRoute } = require('./get-user.js');
 const {
   createGetProjectByOrganizationRoute,
 } = require('./get-projects-by-organization.js');
@@ -12,10 +12,10 @@ const {
 const createDynamoDBRoute = ({ services }) => {
   const router = new Router();
 
-  createAddItemRoute({ router, services });
+  createAddUserRoute({ router, services });
   createAddProjectByOrganizationRoute({ router, services });
   createUpdateOrganizationRoute({ router, services });
-  createGetOrganizationRoute({ router, services });
+  createGetUserRoute({ router, services });
   createGetProjectByOrganizationRoute({ router, services });
   return router;
 };

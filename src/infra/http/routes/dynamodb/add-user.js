@@ -2,10 +2,10 @@ const check = require('express-validator');
 const { validateInput } = require('../../utils/validate-input.js');
 const { toApiResponse } = require('../../utils/response.js');
 
-const createAddItemRoute = ({
+const createAddUserRoute = ({
   router,
   services: {
-    dynamoDBService: { addItem },
+    dynamoDBService: { addUser },
   },
 }) => {
   /**
@@ -18,11 +18,11 @@ const createAddItemRoute = ({
    *
    */
   router.post(
-    '/item',
-    [check.body('name').isString(), check.body('tier').isString()],
+    '/user',
+    [check.body('email').isEmail()],
     validateInput,
-    toApiResponse(async ({ body: { name, tier } }) => {
-      await addItem({ name, tier });
+    toApiResponse(async ({ body: { email } }) => {
+      await addUser({ email });
       return { status: 200, data: null };
     }),
   );
@@ -30,4 +30,4 @@ const createAddItemRoute = ({
   return router;
 };
 
-module.exports = { createAddItemRoute };
+module.exports = { createAddUserRoute };

@@ -19,6 +19,11 @@ const config = {
     ff: {
       httpBruteProtection: true,
     },
+    tableName: process.env.Table_Name,
+    partationKeyPrefix: process.env.PK_PREFIX,
+    skTokenPrefix: process.env.SK_TOKEN_PREFIX,
+    skConnectionPrefix: process.env.SK_CONNECTION_PREFIX,
+    skEmailPrefix: process.env.SK_EMAIL_PREFIX,
   },
   test: {
     port: 3000,

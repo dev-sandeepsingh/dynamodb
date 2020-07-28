@@ -2,18 +2,18 @@ const check = require('express-validator');
 const { validateInput } = require('../../utils/validate-input.js');
 const { toApiResponse } = require('../../utils/response.js');
 
-const createGetOrganizationRoute = ({
+const createGetUserRoute = ({
   router,
   services: {
-    dynamoDBService: { getOrganization },
+    dynamoDBService: { getUser },
   },
 }) => {
   router.get(
-    '/organization',
-    [check.param('orgId')],
+    '/user',
+    [check.param('userId')],
     validateInput,
-    toApiResponse(async ({ query: { orgId } }) => {
-      const organization = await getOrganization({ orgId });
+    toApiResponse(async ({ query: { userId } }) => {
+      const organization = await getUser({ userId });
       return { status: 200, data: organization };
     }),
   );
@@ -21,4 +21,4 @@ const createGetOrganizationRoute = ({
   return router;
 };
 
-module.exports = { createGetOrganizationRoute };
+module.exports = { createGetUserRoute };
