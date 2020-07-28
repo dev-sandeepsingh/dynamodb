@@ -3,7 +3,7 @@ const { createAddUserRoute } = require('./add-user.js');
 const {
   createAddProjectByOrganizationRoute,
 } = require('./add-project-by-organization.js');
-const { createUpdateOrganizationRoute } = require('./update-organization.js');
+const { createUpdateUserRoute } = require('./update-user.js');
 const { createGetUserRoute } = require('./get-user.js');
 const {
   createGetProjectByOrganizationRoute,
@@ -14,7 +14,7 @@ const createDynamoDBRoute = ({ services }) => {
 
   createAddUserRoute({ router, services });
   createAddProjectByOrganizationRoute({ router, services });
-  createUpdateOrganizationRoute({ router, services });
+  createUpdateUserRoute({ router, services });
   createGetUserRoute({ router, services });
   createGetProjectByOrganizationRoute({ router, services });
   return router;

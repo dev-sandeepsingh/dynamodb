@@ -80,7 +80,7 @@ const createApp = ({
   app.use(bodyParserJsonError());
 
   app.use('/users', usersRoute);
-  app.use('/dynamoDB', dynamoDBRoute);
+  app.use('/', dynamoDBRoute);
 
   app.get('/', (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
