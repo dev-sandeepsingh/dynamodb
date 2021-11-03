@@ -58,7 +58,7 @@
     "sequelize-log-syntax-colors": "^2.0.0",
     "sql-formatter": "^2.3.3",
     "uuidv4": "^6.2.0",
-    "validator": "^13.0.0",
+    "validator": "^13.7.0",
     "yn": "^4.0.0"
   },
   "devDependencies": {
