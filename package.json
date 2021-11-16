@@ -37,7 +37,7 @@
     "acl": "^0.4.11",
     "acl-mem-regexp": "^0.2.0",
     "apidoc": "^0.20.0",
-    "aws-sdk": "^2.721.0",
+    "aws-sdk": "^2.814.0",
     "body-parser": "^1.19.0",
     "bull": "^3.13.0",
     "bull-arena": "^2.7.1",
