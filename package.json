@@ -72,7 +72,7 @@
     "faker": "^4.1.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
-    "mocha": "^7.1.2",
+    "mocha": "^10.2.0",
     "prettier": "^1.19.1",
     "sequelize-fixtures": "^1.1.1"
   }
